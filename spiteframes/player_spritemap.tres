@@ -1,0 +1,77 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://c4u7aauhyemog"]
+
+[ext_resource type="Texture2D" uid="uid://lan5kslvdq1h" path="res://assets/tilemaps/NPCs/Male.png" id="1_hj0xv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfsfk"]
+atlas = ExtResource("1_hj0xv")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0aa8"]
+atlas = ExtResource("1_hj0xv")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_saklw"]
+atlas = ExtResource("1_hj0xv")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auwsh"]
+atlas = ExtResource("1_hj0xv")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm8dn"]
+atlas = ExtResource("1_hj0xv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xh652"]
+atlas = ExtResource("1_hj0xv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khir8"]
+atlas = ExtResource("1_hj0xv")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uit1l"]
+atlas = ExtResource("1_hj0xv")
+region = Rect2(48, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfsfk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0aa8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_saklw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auwsh")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm8dn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xh652")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khir8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uit1l")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]

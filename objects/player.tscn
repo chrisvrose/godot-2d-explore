@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://yabfq2q8am40"]
+
+[ext_resource type="Script" path="res://scripts/PlayerControl.cs" id="1_rasjc"]
+[ext_resource type="PackedScene" uid="uid://yyemmtgxmtev" path="res://objects/PlayerCamera.tscn" id="2_csege"]
+[ext_resource type="SpriteFrames" uid="uid://c4u7aauhyemog" path="res://spiteframes/player_spritemap.tres" id="2_h6nld"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_krm70"]
+radius = 5.0
+height = 16.0
+
+[node name="Player" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_rasjc")
+
+[node name="PlayerCamera" parent="." instance=ExtResource("2_csege")]
+position = Vector2(0, -30)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_h6nld")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_krm70")

@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://yyemmtgxmtev"]
+
+[ext_resource type="Texture2D" uid="uid://bjtl1njlsxhw6" path="res://assets/tilemaps/inputs/transparent-dark.png" id="1_1u877"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fq3k5"]
+atlas = ExtResource("1_1u877")
+region = Rect2(416, 240, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wm23f"]
+atlas = ExtResource("1_1u877")
+region = Rect2(473, 320, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myxhg"]
+atlas = ExtResource("1_1u877")
+region = Rect2(416, 160, 80, 80)
+
+[node name="PlayerCamera" type="Camera2D"]
+zoom = Vector2(4, 4)
+
+[node name="Right" type="TouchScreenButton" parent="."]
+position = Vector2(-100, 53)
+scale = Vector2(0.25, 0.25)
+texture_normal = SubResource("AtlasTexture_fq3k5")
+action = "move_right"
+visibility_mode = 1
+
+[node name="Left" type="TouchScreenButton" parent="."]
+position = Vector2(-140, 53)
+scale = Vector2(0.25, 0.25)
+texture_normal = SubResource("AtlasTexture_wm23f")
+action = "move_left"
+visibility_mode = 1
+
+[node name="JumpButton" type="TouchScreenButton" parent="."]
+position = Vector2(125, 53)
+scale = Vector2(0.25, 0.25)
+texture_normal = SubResource("AtlasTexture_myxhg")
+action = "move_jump"
+visibility_mode = 1
