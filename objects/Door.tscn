@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://0icj56ekgqxc"]
+
+[ext_resource type="Script" path="res://scripts/Door.cs" id="1_knftr"]
+[ext_resource type="Texture2D" uid="uid://dcs2khlnl6pnr" path="res://assets/tilemaps/Environment.png" id="2_4atir"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4puyn"]
+size = Vector2(4, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu8cp"]
+atlas = ExtResource("2_4atir")
+region = Rect2(80, 304, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7uwgv"]
+atlas = ExtResource("2_4atir")
+region = Rect2(96, 304, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bo0dt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gu8cp")
+}],
+"loop": false,
+"name": &"CLOSED",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7uwgv")
+}],
+"loop": true,
+"name": &"OPEN",
+"speed": 5.0
+}]
+
+[node name="Door" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 0
+script = ExtResource("1_knftr")
+doorState = 1
+
+[node name="DoorCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(-6, 2.5)
+shape = SubResource("RectangleShape2D_4puyn")
+
+[node name="DoorSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_bo0dt")
+animation = &"CLOSED"
+autoplay = "CLOSED"

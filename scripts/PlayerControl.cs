@@ -10,20 +10,32 @@ enum PlayerState
 
 public partial class PlayerControl : CharacterBody2D
 {
-	public const float Speed = 200.0f;
+	public const float Speed = 100.0f;
 	public const float JumpVelocity = -200.0f;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	private float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	private AnimatedSprite2D animatedSprite2D;
 
+
+	private Door contactingDoor;
+
 	public override void _Ready()
 	{
+		GetNode<TouchScreenButton>("DoorHintButton").Visible = false;
 		animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
+
+		#region handle input interaction
+		if(Input.IsActionJustPressed("interact")){
+			onInteractableButtonPress();
+		}
+		#endregion
+
+
 		Vector2 velocity = Velocity;
 		PlayerState playerState = PlayerState.NOCHANGE;
 		// Add the gravity.
@@ -51,8 +63,8 @@ public partial class PlayerControl : CharacterBody2D
 			if (playerState != PlayerState.JUMP) playerState = PlayerState.IDLE;
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 		}
-		if(playerState!=PlayerState.NOCHANGE) CallDeferred(MethodName.setAnimationState,Variant.From(playerState));
-		CallDeferred(MethodName.setAnimationDirection, direction); 
+		if (playerState != PlayerState.NOCHANGE) CallDeferred(MethodName.setAnimationState, Variant.From(playerState));
+		CallDeferred(MethodName.setAnimationDirection, direction);
 
 		Velocity = velocity;
 		MoveAndSlide();
@@ -76,7 +88,46 @@ public partial class PlayerControl : CharacterBody2D
 					animatedSprite2D.Animation = "idle";
 					break;
 				}
-			default:break;
+			default: break;
+		}
+	}
+
+	public void onInteractableButtonPress()
+	{
+		if (contactingDoor != null)
+		{
+			contactingDoor.toggleDoor();
+		}
+		else
+		{
+			GD.Print("Player> Nothing to interact with!");
+		}
+	}
+
+	public void onInteractableReachable(Node2D node)
+	{
+		GD.Print("Player> Hit an interactable item!", node);
+		if (node is Door)
+		{
+			Door door = node as Door;
+			contactingDoor = door;
+			GetNode<TouchScreenButton>("DoorHintButton").Visible = true;
+		}
+		else
+		{
+			GD.Print("Player> I Don't know what I hit!");
+		}
+	}
+	public void onInteractableBodyUnreachable(Node2D node)
+	{
+		GD.Print("Door left");
+		if (node is Door)
+		{
+			Door door = node as Door;
+			if (contactingDoor == door)
+			{
+				GetNode<TouchScreenButton>("DoorHintButton").Visible = false;
+			}
 		}
 	}
 

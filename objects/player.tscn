@@ -1,12 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://yabfq2q8am40"]
+[gd_scene load_steps=8 format=3 uid="uid://yabfq2q8am40"]
 
 [ext_resource type="Script" path="res://scripts/PlayerControl.cs" id="1_rasjc"]
 [ext_resource type="PackedScene" uid="uid://yyemmtgxmtev" path="res://objects/PlayerCamera.tscn" id="2_csege"]
 [ext_resource type="SpriteFrames" uid="uid://c4u7aauhyemog" path="res://spiteframes/player_spritemap.tres" id="2_h6nld"]
+[ext_resource type="Texture2D" uid="uid://bjtl1njlsxhw6" path="res://assets/tilemaps/inputs/transparent-dark.png" id="4_ibghi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_krm70"]
 radius = 5.0
 height = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sl32"]
+atlas = ExtResource("4_ibghi")
+region = Rect2(480, 48, 48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csuo7"]
+size = Vector2(40, 20)
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
@@ -22,3 +30,19 @@ autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_krm70")
+
+[node name="DoorHintButton" type="TouchScreenButton" parent="."]
+position = Vector2(-6, -26)
+scale = Vector2(0.25, 0.25)
+texture_normal = SubResource("AtlasTexture_2sl32")
+action = "interact"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_csuo7")
+
+[connection signal="body_entered" from="Area2D" to="." method="onInteractableReachable"]
+[connection signal="body_exited" from="Area2D" to="." method="onInteractableBodyUnreachable"]
