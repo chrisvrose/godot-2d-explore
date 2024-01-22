@@ -20,7 +20,6 @@ public partial class PlayerControl : CharacterBody2D
 	public override void _Ready()
 	{
 		animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		GD.Print("We started and ", animatedSprite2D);
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -44,7 +43,6 @@ public partial class PlayerControl : CharacterBody2D
 		Vector2 direction = Input.GetVector("move_left", "move_right", "move_jump", "ui_down");
 		if (direction != Vector2.Zero)
 		{
-			GD.Print("Movement", direction);
 			if (playerState != PlayerState.JUMP) playerState = PlayerState.WALK;
 			velocity.X = direction.X * Speed;
 		}
