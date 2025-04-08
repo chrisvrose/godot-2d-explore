@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://yabfq2q8am40"]
 
-[ext_resource type="Script" path="res://scripts/PlayerControl.cs" id="1_rasjc"]
+[ext_resource type="Script" uid="uid://cu20htgqegsft" path="res://scripts/PlayerControl.cs" id="1_rasjc"]
 [ext_resource type="PackedScene" uid="uid://yyemmtgxmtev" path="res://objects/PlayerCamera.tscn" id="2_csege"]
 [ext_resource type="SpriteFrames" uid="uid://c4u7aauhyemog" path="res://spiteframes/player_spritemap.tres" id="2_h6nld"]
 [ext_resource type="Texture2D" uid="uid://bjtl1njlsxhw6" path="res://assets/tilemaps/inputs/transparent-dark.png" id="4_ibghi"]

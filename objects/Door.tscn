@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://0icj56ekgqxc"]
 
-[ext_resource type="Script" path="res://scripts/Door.cs" id="1_knftr"]
+[ext_resource type="Script" uid="uid://dftalnqy0q64s" path="res://scripts/Door.cs" id="1_knftr"]
 [ext_resource type="Texture2D" uid="uid://dcs2khlnl6pnr" path="res://assets/tilemaps/Environment.png" id="2_4atir"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4puyn"]

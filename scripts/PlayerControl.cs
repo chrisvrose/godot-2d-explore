@@ -127,6 +127,7 @@ public partial class PlayerControl : CharacterBody2D
 			if (contactingDoor == door)
 			{
 				GetNode<TouchScreenButton>("DoorHintButton").Visible = false;
+				contactingDoor = null;
 			}
 		}
 	}
